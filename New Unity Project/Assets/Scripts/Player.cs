@@ -5,31 +5,26 @@ using UnityEngine;
 [RequireComponent (typeof (Controller2D))]
 public class Player : MonoBehaviour
 {
-    
     public float moveSpeed = 6f;
 
     public float jumpHeight = 4;
     public float timeToJumpApex = 1;
     float gravity;
     float jumpVelocity;
-
     bool doubleJumped;
-    bool specialReady;
-    bool specialActive;
-    public float specialTime;
 
     Vector3 velocity;
     Controller2D controller;
+    GameManager gm;
+    public GameObject game;
 
     private void Start()
     {
         controller = GetComponent<Controller2D>();
+        gm = game.GetComponent<GameManager>();
 
         gravity = -(2 * jumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
-
-        specialReady = true;
-        specialActive = false;
     }
 
     private void Update()
@@ -59,28 +54,7 @@ public class Player : MonoBehaviour
 
         if(Input.GetButtonDown("Fire1"))
         {
-            Special();
+            gm.Special();
         }
-    }
-
-    void Special()
-    {
-        if(specialReady)
-        {
-            Debug.Log("Special Active");
-            specialActive = true;
-            specialReady = false;
-            Invoke("DeactivateSpecial", specialTime);
-        }
-    }
-
-    void DeactivateSpecial()
-    {
-        specialActive = false;
-    }
-
-    void CoolDown()
-    {
-
     }
 }
