@@ -36,6 +36,7 @@ public class PlatformController : RaycastController
             {
                 Vector2 rayOrigin = (directionY == -1) ? raycastOrigins.bottomLeft : raycastOrigins.topLeft;
                 rayOrigin += Vector2.right * (verticalRaySpacing * i);
+                Physics2D.SyncTransforms();
                 RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.up * directionY, rayLength, passengerMask);
 
                 if(hit)

@@ -344,8 +344,8 @@ MonoBehaviour:
   collisionMask:
     serializedVersion: 2
     m_Bits: 0
-  horizontalRayCount: 4
-  verticalRayCount: 4
+  horizontalRayCount: 15
+  verticalRayCount: 15
   horizontalRaySpacing: 0
   verticalRaySpacing: 0
   collider1: {fileID: 0}
@@ -820,6 +820,7 @@ MonoBehaviour:
   moveSpeed: 6
   jumpHeight: 3
   timeToJumpApex: 0.3
+  specialTime: 0
 --- !u!114 &1119672779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -835,8 +836,8 @@ MonoBehaviour:
   collisionMask:
     serializedVersion: 2
     m_Bits: 512
-  horizontalRayCount: 30
-  verticalRayCount: 30
+  horizontalRayCount: 5
+  verticalRayCount: 5
   horizontalRaySpacing: 0
   verticalRaySpacing: 0
   collider1: {fileID: 0}

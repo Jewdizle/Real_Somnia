@@ -14,6 +14,9 @@ public class Player : MonoBehaviour
     float jumpVelocity;
 
     bool doubleJumped;
+    bool specialReady;
+    bool specialActive;
+    public float specialTime;
 
     Vector3 velocity;
     Controller2D controller;
@@ -24,6 +27,9 @@ public class Player : MonoBehaviour
 
         gravity = -(2 * jumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
+
+        specialReady = true;
+        specialActive = false;
     }
 
     private void Update()
@@ -50,5 +56,31 @@ public class Player : MonoBehaviour
         velocity.x = input.x * moveSpeed;
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+
+        if(Input.GetButtonDown("Fire1"))
+        {
+            Special();
+        }
+    }
+
+    void Special()
+    {
+        if(specialReady)
+        {
+            Debug.Log("Special Active");
+            specialActive = true;
+            specialReady = false;
+            Invoke("DeactivateSpecial", specialTime);
+        }
+    }
+
+    void DeactivateSpecial()
+    {
+        specialActive = false;
+    }
+
+    void CoolDown()
+    {
+
     }
 }
