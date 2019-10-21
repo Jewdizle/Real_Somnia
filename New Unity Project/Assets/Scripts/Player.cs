@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
     float gravity;
     float jumpVelocity;
 
+    bool doubleJumped;
+
     Vector3 velocity;
     Controller2D controller;
 
@@ -22,8 +24,6 @@ public class Player : MonoBehaviour
 
         gravity = -(2 * jumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
-
-        print("gravity: " + gravity + " Jump Velocity: " + jumpVelocity);
     }
 
     private void Update()
@@ -34,9 +34,18 @@ public class Player : MonoBehaviour
         }
         Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
-        if(Input.GetButtonDown("Jump") && controller.collisions.below)
+        if(Input.GetButtonDown("Jump"))
         {
-            velocity.y = jumpVelocity;
+            if (controller.collisions.below == true)
+            {
+                velocity.y = jumpVelocity;
+                doubleJumped = false;               
+            }
+            if (controller.collisions.below == false && doubleJumped == false)
+            {
+                velocity.y = jumpVelocity;
+                doubleJumped = true;
+            }
         }
         velocity.x = input.x * moveSpeed;
         velocity.y += gravity * Time.deltaTime;

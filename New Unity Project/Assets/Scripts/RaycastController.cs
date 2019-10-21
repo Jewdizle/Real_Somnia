@@ -19,7 +19,6 @@ public class RaycastController : MonoBehaviour
     [HideInInspector]
     public BoxCollider2D collider1;
     public RaycastOrigins raycastOrigins;
-    public CollisionInfo collisions;
 
    
 
@@ -59,25 +58,5 @@ public class RaycastController : MonoBehaviour
         public Vector2 bottomLeft, bottomRight;
     }
 
-    public struct CollisionInfo
-    {
-        public bool above, below;
-        public bool left, right;
-
-        public bool climbingSlope;
-        public bool descendingSleop;
-        public float slopeAngle, slopeAngleOld;
-        public Vector3 velocityOld;
-
-        public void Reset()
-        {
-            above = below = false;
-            left = right = false;
-            climbingSlope = false;
-            descendingSleop = false;
-
-            slopeAngleOld = slopeAngle;
-            slopeAngle = 0;
-        }
-    }
+    
 }
