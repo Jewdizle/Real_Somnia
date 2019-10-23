@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     Controller2D controller;
     GameManager gm;
     public GameObject game;
+    bool nearIneractable;
 
     private void Start()
     {
@@ -60,9 +61,13 @@ public class Player : MonoBehaviour
             }
         }
 
-        if(Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1"))
         {
-            gm.Special();
+            if (!nearIneractable)
+            {
+                gm.Special();
+            }
+            
         }
     }
 }
