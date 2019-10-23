@@ -52,6 +52,14 @@ public class Player : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
+        if (gm.deactivateOnMove && gm.specialActive)
+        {
+            if (input.x != 0 || input.y != 0)
+            {
+                gm.DeactivateSpecial();
+            }
+        }
+
         if(Input.GetButtonDown("Fire1"))
         {
             gm.Special();

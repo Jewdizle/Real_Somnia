@@ -9,43 +9,55 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public bool specialActive;
 
+    public bool persitentPlatform;
+    public bool deactivateOnMove;
+
     public float specialTime;
     public float cooldownTime;
 
-    public GameObject[] hidden;
-    Collider2D collider2D;
+    GameObject[] hidden;
+    Collider2D col;
     MeshRenderer mesh;
-
 
     void Start()
     {
         hidden = GameObject.FindGameObjectsWithTag("Hidden");
-        for (int i = 0; i < hidden.Length - 1; i++)
+        for (int i = 0; i < hidden.Length; i++)
         {
-            collider2D = hidden[i].GetComponent<Collider2D>();
+            col = hidden[i].GetComponent<Collider2D>();
             mesh = hidden[i].GetComponent<MeshRenderer>();
+            col.enabled = true;
         }
         specialReady = true;
-        Debug.Log(hidden.Length);
     }
 
     void Update()
     {
         if (specialActive == true)
         {
-            for(int i = 0; i < hidden.Length-1; i++)
+            for (int i = 0; i < hidden.Length; i++)
             {
-                collider2D.enabled = true;
+                col = hidden[i].GetComponent<Collider2D>();
+                mesh = hidden[i].GetComponent<MeshRenderer>();
                 mesh.enabled = true;
+                if (!persitentPlatform)
+                {
+                    col.enabled = true;                   
+                }
             }
         }
 
         if (specialActive == false)
         {
-            for (int i = 0; i < hidden.Length - 1; i++)
+            for (int i = 0; i < hidden.Length ; i++)
             {
-                collider2D.enabled = false;
+                col = hidden[i].GetComponent<Collider2D>();
+                mesh = hidden[i].GetComponent<MeshRenderer>();
                 mesh.enabled = false;
+                if (!persitentPlatform)
+                {
+                    col.enabled = false;                    
+                }
             }
         }
     }
@@ -55,16 +67,16 @@ public class GameManager : MonoBehaviour
     {
         if (specialReady)
         {
-            Debug.Log("Special Active");
             specialActive = true;
             specialReady = false;
-            Invoke("DeactivateSpecial", specialTime);
+            //Invoke("DeactivateSpecial", specialTime);
         }
     }
 
-    void DeactivateSpecial()
+    public void DeactivateSpecial()
     {
         specialActive = false;
+        specialReady = false;
         Invoke("CoolDown", cooldownTime);
     }
 

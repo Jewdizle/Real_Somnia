@@ -14,7 +14,7 @@ public class Controller2D : RaycastController
     {
         base.Start();
     }
-
+    
     void ClimbSlope(ref Vector3 velocity, float slopeAngle)
     {
         float moveDistance = Mathf.Abs(velocity.x);
@@ -28,7 +28,6 @@ public class Controller2D : RaycastController
             collisions.climbingSlope = true;
             collisions.slopeAngle = slopeAngle;
         }
-
     }
 
     public void Move(Vector3 velocity)
@@ -51,7 +50,7 @@ public class Controller2D : RaycastController
         {
             VerticalCollisions(ref velocity);
         }
-        transform.Translate(velocity);
+        transform.Translate(velocity); 
     }
 
     public void HorizontalCollisions(ref Vector3 velocity)
