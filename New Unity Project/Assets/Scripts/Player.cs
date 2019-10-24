@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
     float jumpVelocity;
     bool doubleJumped;
 
+    bool doubleJumped;
+
     Vector3 velocity;
     Controller2D controller;
     GameManager gm;
