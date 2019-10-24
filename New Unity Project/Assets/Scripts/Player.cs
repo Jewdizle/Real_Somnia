@@ -5,22 +5,24 @@ using UnityEngine;
 [RequireComponent (typeof (Controller2D))]
 public class Player : MonoBehaviour
 {
-    
     public float moveSpeed = 6f;
 
     public float jumpHeight = 4;
     public float timeToJumpApex = 1;
     float gravity;
     float jumpVelocity;
-
     bool doubleJumped;
 
     Vector3 velocity;
     Controller2D controller;
+    GameManager gm;
+    public GameObject game;
+    bool nearIneractable;
 
     private void Start()
     {
         controller = GetComponent<Controller2D>();
+        gm = game.GetComponent<GameManager>();
 
         gravity = -(2 * jumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
@@ -50,5 +52,22 @@ public class Player : MonoBehaviour
         velocity.x = input.x * moveSpeed;
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+
+        if (gm.deactivateOnMove && gm.specialActive)
+        {
+            if (input.x != 0 || input.y != 0 || Input.GetButtonDown("Jump"))
+            {
+                gm.DeactivateSpecial();
+            }
+        }
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+            if (!nearIneractable)
+            {
+                gm.Special();
+            }
+            
+        }
     }
 }
