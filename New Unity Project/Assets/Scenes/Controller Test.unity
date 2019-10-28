@@ -501,6 +501,8 @@ GameObject:
   m_Component:
   - component: {fileID: 616766465}
   - component: {fileID: 616766464}
+  - component: {fileID: 616766467}
+  - component: {fileID: 616766466}
   m_Layer: 0
   m_Name: _Game
   m_TagString: Untagged
@@ -521,8 +523,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   specialReady: 0
+  specialActived: 0
   specialActive: 0
-  persitentPlatform: 0
   deactivateOnMove: 1
   specialTime: 2
   cooldownTime: 2
@@ -540,6 +542,58 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &616766466
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616766463}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 9f2d1cd7f7ccd88498e143dc4fb84f85, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!114 &616766467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616766463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3ec9163be8386a499769b0e2146e2d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rampUpTime: 1
+  rampDownTime: 1
+  opaque: 0
 --- !u!1 &677783674
 GameObject:
   m_ObjectHideFlags: 0
@@ -729,7 +783,6 @@ GameObject:
   - component: {fileID: 832901241}
   - component: {fileID: 832901240}
   - component: {fileID: 832901239}
-  - component: {fileID: 832901243}
   m_Layer: 9
   m_Name: Quad (2)
   m_TagString: Hidden
@@ -822,22 +875,6 @@ Transform:
   m_Father: {fileID: 144669781}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &832901243
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 832901238}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3ec9163be8386a499769b0e2146e2d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mat: {fileID: 2100000, guid: 9f2d1cd7f7ccd88498e143dc4fb84f85, type: 2}
-  game: {fileID: 616766463}
-  rampUpTime: 0.5
-  rampDownTime: 0.5
 --- !u!1 &964898764
 GameObject:
   m_ObjectHideFlags: 0
@@ -850,7 +887,6 @@ GameObject:
   - component: {fileID: 964898767}
   - component: {fileID: 964898766}
   - component: {fileID: 964898765}
-  - component: {fileID: 964898769}
   m_Layer: 9
   m_Name: Quad (3)
   m_TagString: Hidden
@@ -937,28 +973,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 964898764}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.691837, y: -1.9857409, z: 0.8752661}
+  m_LocalPosition: {x: -1.8, y: -0.64, z: 0.8752661}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 144669781}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &964898769
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 964898764}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3ec9163be8386a499769b0e2146e2d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mat: {fileID: 2100000, guid: 9f2d1cd7f7ccd88498e143dc4fb84f85, type: 2}
-  game: {fileID: 616766463}
-  rampUpTime: 0.5
-  rampDownTime: 0.5
 --- !u!1 &1079065336
 GameObject:
   m_ObjectHideFlags: 0
@@ -1028,6 +1048,7 @@ MonoBehaviour:
   moveSpeed: 6
   jumpHeight: 3
   timeToJumpApex: 0.3
+  gravityMultiplyer: 2
   game: {fileID: 616766463}
 --- !u!114 &1119672779
 MonoBehaviour:
@@ -1130,7 +1151,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1119672777}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.811, y: 9.509, z: 0}
+  m_LocalPosition: {x: 6.811, y: 4.57, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1265,22 +1286,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.014704998, y: 0.008308489}
   m_EdgeRadius: 0
---- !u!114 &1561198556
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1561198551}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3ec9163be8386a499769b0e2146e2d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mat: {fileID: 2100000, guid: 9f2d1cd7f7ccd88498e143dc4fb84f85, type: 2}
-  game: {fileID: 616766463}
-  rampUpTime: 0.5
-  rampDownTime: 0.5
 --- !u!1 &1577612417
 GameObject:
   m_ObjectHideFlags: 0
@@ -1397,7 +1402,6 @@ GameObject:
   - component: {fileID: 1721774864}
   - component: {fileID: 1721774863}
   - component: {fileID: 1721774862}
-  - component: {fileID: 1721774866}
   m_Layer: 9
   m_Name: Quad (1)
   m_TagString: Hidden
@@ -1490,19 +1494,3 @@ Transform:
   m_Father: {fileID: 144669781}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1721774866
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1721774861}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3ec9163be8386a499769b0e2146e2d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mat: {fileID: 2100000, guid: 9f2d1cd7f7ccd88498e143dc4fb84f85, type: 2}
-  game: {fileID: 616766463}
-  rampUpTime: 0.5
-  rampDownTime: 0.5

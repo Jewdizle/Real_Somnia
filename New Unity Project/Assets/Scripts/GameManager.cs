@@ -7,56 +7,37 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public bool specialReady;
     [HideInInspector]
-    public bool specialActive;
-
-    public bool persitentPlatform;
+    public bool specialActived;
+    [HideInInspector]
+    public bool specialActive = false;
     public bool deactivateOnMove;
 
     public float specialTime;
     public float cooldownTime;
 
-    GameObject[] hidden;
-    Sha shade;
+    Shade shade;
     Collider2D col;
     //MeshRenderer mesh;
 
     void Start()
-    {
-        hidden = GameObject.FindGameObjectsWithTag("Hidden");
-        specialReady = true;
-    }
-
-    void Update()
-    {
-        if (specialActive == true)
-        {
-            for(int i = 0; i<hidden.Length;i++)
-            {
-                shade = hidden[i].GetComponent<Sha>();
-                shade.RampUp();
-            }
-        }
-
-        if (specialActive == false)
-        {
-            for (int i = 0; i < hidden.Length -1; i++)
-            {
-                shade = hidden[i].GetComponent<Sha>();
-                shade.RampDown();
-            }
-
-        }
-           
+    {       
+        specialReady = true;      
+        shade = gameObject.GetComponent<Shade>();
+        
     }
 
     //Special --------------------------------------------------------
     public void Special()
     {
-        if (specialReady)
+        if (specialReady == true)
         {
             specialActive = true;
-            specialReady = false;
+            specialReady = false;            
             Invoke("DeactivateSpecial", specialTime);
+            
+                shade.ChangeMat();
+           
+            Debug.Log("special activated");
         }
     }
 
@@ -64,9 +45,13 @@ public class GameManager : MonoBehaviour
     {
         if (specialActive)
         {
-            specialActive = false;
             specialReady = false;
+            specialActive = false;
+            
+            shade.ChangeMat();
+            
             Invoke("CoolDown", cooldownTime);
+            Debug.Log("special deactivated");
         }
     }
 

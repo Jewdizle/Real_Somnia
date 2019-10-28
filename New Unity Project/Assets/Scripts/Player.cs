@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
 
     public float jumpHeight = 4;
     public float timeToJumpApex = 1;
+    public float gravityMultiplyer = 1;
     float gravity;
     float jumpVelocity;
     bool doubleJumped;
