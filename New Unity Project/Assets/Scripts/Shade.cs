@@ -24,7 +24,7 @@ public class Shade : MonoBehaviour
         gm = gameObject.GetComponent<GameManager>();
         alpha = 0;
         mat = gameObject.GetComponent<Material>();
-        mat.SetFloat("_shaderAlpha", alpha);
+        //mat.SetFloat("_shaderAlpha", alpha);
         opaque = false;
 
     }
@@ -34,19 +34,16 @@ public class Shade : MonoBehaviour
         if(opaque == true && alpha < 1f)
         {
             alpha = Mathf.Lerp(0f, 1f, ramp);
-            mat.SetFloat("_shaderAlpha", alpha);
+            //mat.SetFloat("_shaderAlpha", alpha);
             ramp = ramp + 0.1f;
         }
 
         if (opaque == false && alpha > 0.0f)
         {
-            Debug.Log("RampDown");
             alpha = Mathf.Lerp(0f, 1f, ramp);
-            mat.SetFloat("_shaderAlpha", alpha);
+           // mat.SetFloat("_shaderAlpha", alpha);
             ramp = ramp - 0.1f;      
         }
-
-        Debug.Log(alpha);
     }
 
     void RampUp()
