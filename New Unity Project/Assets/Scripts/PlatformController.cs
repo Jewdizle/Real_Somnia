@@ -7,7 +7,7 @@ public class PlatformController : RaycastController
     public Vector3 move;
     public LayerMask passengerMask;
 
-    public override  void Start()
+    public override void Start()
     {
         base.Start();
     }
@@ -38,7 +38,7 @@ public class PlatformController : RaycastController
                 rayOrigin += Vector2.right * (verticalRaySpacing * i);
                 RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.up * directionY, rayLength, passengerMask);
 
-                if(hit)
+                if (hit)
                 {
                     if (!movedPassengers.Contains(hit.transform))
                     {

@@ -85,13 +85,17 @@ public class Player : MonoBehaviour
             }
         }
 
+        if( input.x == 0)
+        {
+
+        }
+
         if (Input.GetButtonDown("Fire1"))
         {
             if (!nearIneractable)
             {
                 gm.Special();
-            }
-            
+            }           
         }
     }
 }
