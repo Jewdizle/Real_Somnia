@@ -21,12 +21,10 @@ public class RespawnManager : MonoBehaviour
 
     }
 
-    private void OnControllerColliderHit(ControllerColliderHit hit)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(hit.gameObject.tag == "Player")
-        {
-            hit.gameObject.transform.position = respawnPoint.transform.position;
-        }
+        collision.gameObject.transform.position = respawnPoint.transform.position;
     }
+
 }
 
