@@ -28,7 +28,6 @@ public class Controller2D : RaycastController
             collisions.climbingSlope = true;
             collisions.slopeAngle = slopeAngle;
         }
-
     }
 
     public void Move(Vector3 velocity)
@@ -51,7 +50,7 @@ public class Controller2D : RaycastController
         {
             VerticalCollisions(ref velocity);
         }
-        transform.Translate(velocity);
+        transform.Translate(velocity); 
     }
 
     public void HorizontalCollisions(ref Vector3 velocity)
@@ -113,6 +112,7 @@ public class Controller2D : RaycastController
         {
             Vector2 rayOrigin = (directionY == -1) ? raycastOrigins.bottomLeft : raycastOrigins.topLeft;
             rayOrigin += Vector2.right * (verticalRaySpacing * i + velocity.x);
+            Physics2D.SyncTransforms();
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.up * directionY, rayLength, collisionMask);
 
             Debug.DrawRay(rayOrigin, Vector2.up * directionY * rayLength, Color.red);
