@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Crystal_Shader_MAT
-  m_Shader: {fileID: -6465566751694194690, guid: 522f2df51dbed10409c16c3cdce29976,
+  m_Name: Nightmare_Crystal_MAT
+  m_Shader: {fileID: -6465566751694194690, guid: 1bfb080bd3599a14fb3dad877223c299,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -70,9 +70,8 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - _shaderAlpha: 0
     m_Colors:
-    - Color_E1626986: {r: 0.35858795, g: 0.48877728, b: 2.0546122, a: 0}
+    - Color_E1626986: {r: 0.6988606, g: 0, b: 0.00731801, a: 0}
     - _BaseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
