@@ -20,6 +20,10 @@ public class Player : MonoBehaviour
     public GameObject game;
     bool nearIneractable;
 
+    public bool isMoving;
+    public bool isJumping;
+    public bool facingRight;
+
     private void Start()
     {
         controller = GetComponent<Controller2D>();
@@ -35,10 +39,16 @@ public class Player : MonoBehaviour
         {
             velocity.y = 0;
         }
+
+        if(controller.collisions.below)
+        {
+            isJumping = false;
+        }
         Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
         if(Input.GetButtonDown("Jump"))
         {
+            isJumping = true;
             if (controller.collisions.below == true)
             {
                 velocity.y = jumpVelocity;
@@ -59,6 +69,19 @@ public class Player : MonoBehaviour
             if (input.x != 0 || input.y != 0 || Input.GetButtonDown("Jump"))
             {
                 gm.DeactivateSpecial();
+            }
+        }
+
+        if (input.x != 0)
+        {
+            isMoving = true;
+            if(input.x>0)
+            {
+                facingRight = true;
+            }
+            if (input.x<0)
+            {
+                facingRight = false;
             }
         }
 

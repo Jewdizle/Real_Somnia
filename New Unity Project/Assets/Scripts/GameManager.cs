@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
             
                 shade.ChangeMat();
            
-            Debug.Log("special activated");
+ 
         }
     }
 
@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
             shade.ChangeMat();
             
             Invoke("CoolDown", cooldownTime);
-            Debug.Log("special deactivated");
+
         }
     }
 
