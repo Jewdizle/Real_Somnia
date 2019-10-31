@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Crystal_Shader_MAT
+  m_Name: Crystal_Shader_MAT 2
   m_Shader: {fileID: -6465566751694194690, guid: 522f2df51dbed10409c16c3cdce29976,
     type: 3}
   m_ShaderKeywords: 

@@ -3,6 +3,7 @@ using System.Collections;
 
 public class CameraFollow : MonoBehaviour {
 
+    public float z;
 	public Controller2D target;
 	public float verticalOffset;
 	public float lookAheadDstX;
@@ -24,7 +25,7 @@ public class CameraFollow : MonoBehaviour {
 		focusArea = new FocusArea (target.collider.bounds, focusAreaSize);
 	}
 
-	void LateUpdate() {
+	void Update() {
 		focusArea.Update (target.collider.bounds);
 
 		Vector2 focusPosition = focusArea.centre + Vector2.up * verticalOffset;
@@ -48,7 +49,7 @@ public class CameraFollow : MonoBehaviour {
 
 		focusPosition.y = Mathf.SmoothDamp (transform.position.y, focusPosition.y, ref smoothVelocityY, verticalSmoothTime);
 		focusPosition += Vector2.right * currentLookAheadX;
-		transform.position = (Vector3)focusPosition + Vector3.forward * -10;
+		transform.position = (Vector3)focusPosition + Vector3.forward * -z;
 	}
 
 	void OnDrawGizmos() {
