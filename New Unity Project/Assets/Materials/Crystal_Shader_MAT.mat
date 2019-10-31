@@ -72,7 +72,7 @@ Material:
     - _ZWrite: 1
     - _shaderAlpha: 0
     m_Colors:
-    - Color_E1626986: {r: 0.35858795, g: 0.48877728, b: 2.0546122, a: 0}
+    - Color_E1626986: {r: 0.57161254, g: 3.2111173, b: 1.899771, a: 0}
     - _BaseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
