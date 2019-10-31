@@ -1040,7 +1040,7 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 445
+      x: 447
       y: 513
       width: 38
       height: 64
@@ -1474,7 +1474,7 @@ ScriptedImporter:
     - {x: 0, y: 24}
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 36, y: -120}
+    uvTransform: {x: 24, y: -122}
   - name: F. Eye
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1837,7 +1837,7 @@ ScriptedImporter:
     - {x: 0, y: 25}
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 41, y: -102}
+    uvTransform: {x: 31, y: -109}
   - name: Head
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -4924,7 +4924,7 @@ ScriptedImporter:
     parentIndex: 0
     spriteID: 41ef82fa679a7bc4c9a95ad7d384d936
     layerID: 30
-    mosaicPosition: {x: 445, y: 513}
+    mosaicPosition: {x: 447, y: 513}
   - name: F. Eye
     spriteName: F. Eye
     isGroup: 0
