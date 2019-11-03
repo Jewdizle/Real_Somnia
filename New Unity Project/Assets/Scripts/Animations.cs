@@ -7,11 +7,14 @@ public class Animations : MonoBehaviour
     private bool moving = false;
     private Animator anim;
     Controller2D controller;
+    Player player;
+    private bool doubleJumped = false;
 
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
+        player = GetComponentInParent<Player>();
         controller = GetComponentInParent<Controller2D>();
     }
 
@@ -42,10 +45,22 @@ public class Animations : MonoBehaviour
             anim.SetBool("isRunning", false);
         }
 
+        if (controller.collisions.below)
+        {
+            doubleJumped = false;
+        }
+
         if (controller.collisions.below && Input.GetKeyDown(KeyCode.Space))
         {
             anim.SetTrigger("takeOff");
         }
+
+        if (doubleJumped == false && Input.GetKeyDown(KeyCode.Space) && !controller.collisions.below)
+        {
+            anim.SetTrigger("takeOff");
+            doubleJumped = true;
+        }
+        
 
         if (!controller.collisions.below)
         {
