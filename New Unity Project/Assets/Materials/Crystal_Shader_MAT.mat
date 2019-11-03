@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Crystal_Shader_MAT
-  m_Shader: {fileID: -6465566751694194690, guid: 522f2df51dbed10409c16c3cdce29976,
+  m_Shader: {fileID: -6465566751694194690, guid: cb3c7e70a2f33cc4295dea5b160acfc0,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -72,7 +72,7 @@ Material:
     - _ZWrite: 1
     - _shaderAlpha: 0
     m_Colors:
-    - Color_E1626986: {r: 0.57161254, g: 3.2111173, b: 1.899771, a: 0}
+    - Color_E1626986: {r: 0.39963788, g: 1.3448132, b: 0.43427783, a: 0}
     - _BaseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
