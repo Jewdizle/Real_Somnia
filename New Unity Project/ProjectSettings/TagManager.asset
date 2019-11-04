@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Hidden
   - Game
+  - Collectable
   layers:
   - Default
   - TransparentFX
