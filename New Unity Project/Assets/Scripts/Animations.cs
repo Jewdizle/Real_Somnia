@@ -8,7 +8,9 @@ public class Animations : MonoBehaviour
     private Animator anim;
     Controller2D controller;
     Player player;
-    private bool doubleJumped = false;
+
+    [HideInInspector]
+    public bool doubleJumped = false;
 
     // Start is called before the first frame update
     void Start()
@@ -57,7 +59,7 @@ public class Animations : MonoBehaviour
 
         if (doubleJumped == false && Input.GetKeyDown(KeyCode.Space) && !controller.collisions.below)
         {
-            anim.SetTrigger("takeOff");
+            anim.SetTrigger("doubleTakeOff");
             doubleJumped = true;
         }
         
