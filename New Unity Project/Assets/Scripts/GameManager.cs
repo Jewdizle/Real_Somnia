@@ -19,8 +19,6 @@ public class GameManager : MonoBehaviour
 
     public List<Renderer> hidden;
 
-    
-
     void Start()
     { 
         alpha = 0f;
@@ -31,7 +29,7 @@ public class GameManager : MonoBehaviour
 
         specialReady = true;
         specialActived = false;
-        specialActive = false;     
+        specialActive = false;
     }
 
     private void Update()
@@ -65,6 +63,8 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+
+
     }
 
     //Special --------------------------------------------------------
