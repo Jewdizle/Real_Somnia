@@ -6,6 +6,7 @@ public class RespawnManager : MonoBehaviour
 {
 
     public Transform respawnPoint;
+    
 
 
 
@@ -21,10 +22,9 @@ public class RespawnManager : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        collision.gameObject.transform.position = respawnPoint.transform.position;
+        collider.gameObject.transform.position = respawnPoint.transform.position;
     }
-
 }
 

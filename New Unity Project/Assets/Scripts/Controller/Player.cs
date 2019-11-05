@@ -21,7 +21,7 @@ public class Player : MonoBehaviour {
 	public float wallStickTime = .25f;
 	float timeToWallUnstick;
 
-	float gravity;
+	public static float gravity;
 	float maxJumpVelocity;
 	float minJumpVelocity;
 	Vector3 velocity;
@@ -61,7 +61,9 @@ public class Player : MonoBehaviour {
         }
 	}
 
-	public void SetDirectionalInput (Vector2 input) {
+
+
+    public void SetDirectionalInput (Vector2 input) {
 		directionalInput = input;
 	}
 
