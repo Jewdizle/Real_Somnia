@@ -5,9 +5,11 @@ using System.Collections;
 public class PlayerInput : MonoBehaviour {
 
 	Player player;
+    GameManager gm;
 
 	void Start () {
 		player = GetComponent<Player> ();
+        gm = GameObject.Find("_Game").GetComponent<GameManager>();
 	}
 
 	void Update () {
@@ -21,4 +23,23 @@ public class PlayerInput : MonoBehaviour {
 			player.OnJumpInputUp ();
 		}
 	}
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Collectable")
+        {
+            gm.nearCollectable = true;
+            Debug.Log("near interactable");
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Collectable")
+        {
+            gm.nearCollectable = false;
+            Debug.Log("leaving");
+
+        }
+    }
 }

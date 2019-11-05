@@ -10,7 +10,6 @@ public class CameraFollow : MonoBehaviour {
 	public float lookSmoothTimeX;
 	public float verticalSmoothTime;
 	public Vector2 focusAreaSize;
-    public float z;
 
 	FocusArea focusArea;
 

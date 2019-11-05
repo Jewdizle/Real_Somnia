@@ -5,19 +5,23 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     bool specialReady;
-    bool specialActived;
     bool specialActive;
 
     public bool deactivateOnMove;
 
-    public float specialTime;
-    public float cooldownTime;
+    public float specialTime = 3f;
+    public float cooldownTime = 3f;
     public float rampTime = 1;
 
     [HideInInspector]
     public float alpha;
 
     public List<Renderer> hidden;
+
+    [HideInInspector]
+    public bool nearCollectable;
+
+    FallTrigger ft;
 
     void Start()
     { 
@@ -28,43 +32,50 @@ public class GameManager : MonoBehaviour
         }
 
         specialReady = true;
-        specialActived = false;
         specialActive = false;
+
+        ft = GameObject.Find("FallCollectable").GetComponent<FallTrigger>();
     }
 
     private void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (!nearCollectable)
         {
-            Special();
-        }
-
-        if(specialActive && alpha < 1f)
-        {
-            for (int i = 0; i < hidden.Count; i++)
+            if (Input.GetButtonDown("Fire1"))
             {
-                if (hidden[i].sharedMaterial.GetFloat("_shaderAlpha") < 1f)
+                Special();
+            }
+
+            if (specialActive && alpha < 1f)
+            {
+                for (int i = 0; i < hidden.Count; i++)
                 {
-                    alpha = alpha + Time.deltaTime * rampTime;
-                    hidden[i].sharedMaterial.SetFloat("_shaderAlpha", alpha);
+                    if (hidden[i].sharedMaterial.GetFloat("_shaderAlpha") < 1f)
+                    {
+                        alpha = alpha + Time.deltaTime * rampTime;
+                        hidden[i].sharedMaterial.SetFloat("_shaderAlpha", alpha);
+                    }
+                }
+            }
+
+            if (!specialActive && alpha > 0f)
+            {
+
+                for (int i = 0; i < hidden.Count; i++)
+                {
+                    if (hidden[i].sharedMaterial.GetFloat("_shaderAlpha") > 0f)
+                    {
+                        alpha = alpha - Time.deltaTime * rampTime;
+                        hidden[i].sharedMaterial.SetFloat("_shaderAlpha", alpha);
+                    }
                 }
             }
         }
 
-        if(!specialActive && alpha > 0f)
+        if(nearCollectable && Input.GetButtonDown("Fire1"))
         {
-
-            for (int i = 0; i < hidden.Count; i++)
-            {
-                if (hidden[i].sharedMaterial.GetFloat("_shaderAlpha") > 0f)
-                {
-                    alpha = alpha - Time.deltaTime * rampTime;
-                    hidden[i].sharedMaterial.SetFloat("_shaderAlpha", alpha);
-                }
-            }
+            ft.Collect();
         }
-
-
     }
 
     //Special --------------------------------------------------------

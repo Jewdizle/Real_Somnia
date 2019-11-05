@@ -25,14 +25,14 @@ public class Animations : MonoBehaviour
     {
         moving = false;
 
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetAxis("Horizontal") > 0f)
         {
             gameObject.transform.eulerAngles = new Vector3(0, 0, 0);
             moving = true;
         }
 
 
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetAxis("Horizontal") < 0f)
         {
             gameObject.transform.eulerAngles = new Vector3(0, 180, 0);
             moving = true;
@@ -52,12 +52,12 @@ public class Animations : MonoBehaviour
             doubleJumped = false;
         }
 
-        if (controller.collisions.below && Input.GetKeyDown(KeyCode.Space))
+        if (controller.collisions.below && Input.GetButtonDown("Jump"))
         {
             anim.SetTrigger("takeOff");
         }
 
-        if (doubleJumped == false && Input.GetKeyDown(KeyCode.Space) && !controller.collisions.below)
+        if (doubleJumped == false && Input.GetButtonDown("Jump") && !controller.collisions.below)
         {
             anim.SetTrigger("doubleTakeOff");
             doubleJumped = true;
