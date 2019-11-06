@@ -4,20 +4,66 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-
-    public Vector3 startingPos;
+    public Transform posA;
+    public Transform posB;
+    public float percentage;
     public Transform trans;
-    public float amountToMove;
+    public float waitTime;
     public float moveSpeed;
 
     void Start()
     {
         trans = GetComponent<Transform>();
-        startingPos = trans.position;
+        StartCoroutine(EnemyMove());
     }
-    void Update()
+   
+    public IEnumerator EnemyMove()
     {
-        trans.position = new Vector3(startingPos.x + Mathf.PingPong(Time.time * moveSpeed, amountToMove), startingPos.y, startingPos.z);
+        percentage = 0;
+        Debug.Log("Moving towards B");
+        while (percentage <1)
+        {
+            percentage += moveSpeed;
+            if (percentage > 1)
+            {
+                percentage = 1;
+            }
+            float position = Mathf.Lerp(posA.position.x, posB.position.x, percentage);
+            trans.position = new Vector3(position, trans.position.y, trans.position.z);
+            yield return new WaitForSecondsRealtime(Time.deltaTime);
+           
+        }
+        yield return new WaitForSeconds(waitTime);
+        Debug.Log("Moving towards A");
+        percentage = 0;
+        while (percentage < 1)
+        {
+            percentage += moveSpeed;
+            if(percentage > 1)
+            {
+                percentage = 1;
+            }
+            float position = Mathf.Lerp(posB.position.x, posA.position.x, percentage);
+            trans.position = new Vector3(position, trans.position.y, trans.position.z);
+            yield return new WaitForSecondsRealtime(Time.deltaTime);
+        }
+        yield return new WaitForSeconds(waitTime);
+        StartCoroutine(EnemyMove());
+    }
+
+
+
+
+
+
+
+    private void Update()
+    {
+        //if(movementOn == false)
+        //{
+        //    Debug.Log("restarting");
+        //    StartCoroutine(EnemyMove());
+        //}
     }
 }
 
