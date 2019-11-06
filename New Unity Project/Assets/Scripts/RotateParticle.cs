@@ -2,23 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class trigger : MonoBehaviour
+public class RotateParticle : MonoBehaviour
 {
+    public Vector3 rotate;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-
-
-    }
-
-    private void OnTriggerEnter2D(Collider2D Player)
-    {
-        Debug.Log("triggered");
+        transform.Rotate(rotate);
     }
 }

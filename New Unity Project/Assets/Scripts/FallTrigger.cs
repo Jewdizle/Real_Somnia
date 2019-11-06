@@ -14,18 +14,12 @@ public class FallTrigger : MonoBehaviour
         walls.SetActive(false);
     }
 
-    
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void Collect()
     {
-        if (collision.gameObject.tag == "Player")
-        {
-            {
-                Player.gravity = -5f;
-                Destroy(platforms);
-                deathZone.SetActive(false);
-                walls.SetActive(true);
-            }
-        }
+        Player.gravity = -5f;
+        Destroy(platforms);
+        deathZone.SetActive(false);
+        walls.SetActive(true);
+        Destroy(gameObject);
     }
 }

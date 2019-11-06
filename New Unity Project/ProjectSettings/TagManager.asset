@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Hidden
+  - Game
+  - Collectable
   layers:
   - Default
   - TransparentFX
@@ -16,7 +18,7 @@ TagManager:
   - 
   - Player
   - Obstacle
-  - 
+  - TriggerCollider
   - 
   - 
   - 
