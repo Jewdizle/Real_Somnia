@@ -5,17 +5,22 @@ using UnityEngine;
 public class Collectable : MonoBehaviour
 {
     Renderer[] mat;
+    GameObject[] dreamArea;
     public GameObject particles;
     public Material goodDreamMaterial;
-    public int dreamArea;
+    public int area;
     string dreamMat = "DreamArea";
     bool nearCollectable;
     bool interacted;
 
     private void Start()
     {
-        for(int i =0; i)
-        mat = GameObject.Find(dreamMat+dreamArea).GetComponentInChildren<Renderer>();
+        dreamArea = GameObject.FindGameObjectsWithTag("DreamArea" + area);
+        for(int i = 0; i<dreamArea.Length-1; i++)
+        {
+            mat[i] = dreamArea[i].GetComponent<Renderer>();
+        }
+        Debug.Log(mat.Length);
     }
 
     private void Update()
