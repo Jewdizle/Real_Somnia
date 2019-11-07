@@ -12,11 +12,11 @@ public class FallTrigger : MonoBehaviour
     public GameObject implosionEffect;
     public GameObject evilExplosion;
     public GameObject verticalOffsetTrigger;
+    public Animator anim;
 
 
     private void Start()
     {
-        
         wallsR.SetActive(false);
         wallsL.SetActive(false);
     }
@@ -24,6 +24,7 @@ public class FallTrigger : MonoBehaviour
     public void Collect()
     {
         CameraFollow.verticalSmoothTime = 0.1f;
+        anim.SetTrigger("falling");
         Instantiate(implosionEffect);
         Instantiate(evilExplosion);
         //Instantiate(verticalOffsetTrigger);
@@ -34,6 +35,7 @@ public class FallTrigger : MonoBehaviour
         wallsR.SetActive(true);
         wallsL.SetActive(true);
         Destroy(gameObject, 0.5f);
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

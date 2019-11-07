@@ -10,7 +10,7 @@ public class DoorClose : MonoBehaviour
     
     void Start()
     {
-        door.transform.position = new Vector3(48.63f, 53, 1);
+        door.transform.position = new Vector3(48.63f, 54.83f, 1);
         target.transform.position = new Vector3(48.63f, 46, 1);
     }
 
