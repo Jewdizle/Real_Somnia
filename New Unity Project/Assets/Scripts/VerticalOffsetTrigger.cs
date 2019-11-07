@@ -2,14 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LandTrigger : MonoBehaviour
+public class VerticalOffsetTrigger : MonoBehaviour
+
 {
+    
+    
+
+   
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if(collision.gameObject.tag == "Player")
         {
-            CameraFollow.verticalSmoothTime = 0.2f;
-            Player.gravity = -50f;
+            CameraFollow.verticalSmoothTime = 0;
         }
     }
 }

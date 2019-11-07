@@ -8,7 +8,7 @@ public class CameraFollow : MonoBehaviour {
 	public float verticalOffset;
 	public float lookAheadDstX;
 	public float lookSmoothTimeX;
-	public float verticalSmoothTime;
+	public static float verticalSmoothTime = 0.2f;
 	public Vector2 focusAreaSize;
 
 	FocusArea focusArea;

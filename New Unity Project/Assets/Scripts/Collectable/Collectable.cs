@@ -14,8 +14,8 @@ public class Collectable : MonoBehaviour
 
     private void Start()
     {
-        for(int i =0; i)
-        mat = GameObject.Find(dreamMat+dreamArea).GetComponentInChildren<Renderer>();
+        //for (int i = 0; i < 10; i++) ;
+        //mat = GameObject.Find(dreamMat+dreamArea).GetComponentInChildren<Renderer>();
     }
 
     private void Update()
