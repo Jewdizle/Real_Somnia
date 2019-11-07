@@ -4,22 +4,47 @@ using UnityEngine;
 
 public class Collectable : MonoBehaviour
 {
-    public int collectedCollectables;
-    public int totalCollectables;
+    Renderer[] mat;
+    public GameObject particles;
+    public Material goodDreamMaterial;
+    public int dreamArea;
+    string dreamMat = "DreamArea";
+    bool nearCollectable;
+    bool interacted;
 
-    GameObject[] collectables;
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        collectables = GameObject.FindGameObjectsWithTag("Collectable");
-        totalCollectables = collectables.Length;
+        for(int i =0; i)
+        mat = GameObject.Find(dreamMat+dreamArea).GetComponentInChildren<Renderer>();
+    }
+
+    private void Update()
+    {
+        if (nearCollectable && Input.GetButton("Fire1"))
+        {
+            Collect();
+        }
+    }
+   
+    void Collect()
+    {
+        if (!interacted)
+        {
+            Instantiate(particles, gameObject.transform);
+            for (int i = 0; i < mat.Length - 1; i++)
+            {
+                mat[i].material = goodDreamMaterial;
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Collectable")
-        {
-            collectedCollectables++;
-        }
+        nearCollectable = true;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        nearCollectable = false;
     }
 }
