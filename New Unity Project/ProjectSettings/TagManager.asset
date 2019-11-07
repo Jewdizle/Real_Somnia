@@ -7,7 +7,7 @@ TagManager:
   - Hidden
   - Game
   - Collectable
-  - Enemy
+  - DreamArea0
   layers:
   - Default
   - TransparentFX

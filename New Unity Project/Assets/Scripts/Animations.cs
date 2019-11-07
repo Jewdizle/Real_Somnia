@@ -8,6 +8,8 @@ public class Animations : MonoBehaviour
     private Animator anim;
     Controller2D controller;
     Player player;
+    private bool isAwake = false;
+    public GameObject parent;
 
     [HideInInspector]
     public bool doubleJumped = false;
@@ -20,24 +22,31 @@ public class Animations : MonoBehaviour
         controller = GetComponentInParent<Controller2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
+        //constantly sets moving to false to let the animator know to idle
         moving = false;
 
-        if (Input.GetAxis("Horizontal") > 0f)
+        //Begnis the game on pressing W, note that controls aren't locked at the moment
+        if (Input.anyKey && isAwake == false)
         {
-            gameObject.transform.eulerAngles = new Vector3(0, 0, 0);
-            moving = true;
+            isAwake = true;
+            anim.SetTrigger("anyButtonStart");
         }
 
-
-        if (Input.GetAxis("Horizontal") < 0f)
+        //Tests if the player is running right, set them to visually be running right, then plays the run animation
+        if (Input.GetAxis("Horizontal")>0)
         {
-            gameObject.transform.eulerAngles = new Vector3(0, 180, 0);
-            moving = true;
+            FaceRight();
         }
 
+        //Same as above but for left
+        if (Input.GetAxis("Horizontal") < 0)
+        {
+            FaceLeft();
+        }
+
+        //Playing the idle or running animations
         if (moving == true)
         {
             anim.SetBool("isRunning", true);
@@ -47,23 +56,26 @@ public class Animations : MonoBehaviour
             anim.SetBool("isRunning", false);
         }
 
+        //Resets the double jump testing
         if (controller.collisions.below)
         {
             doubleJumped = false;
         }
 
+        //Triggers the takeoff animation, and the mid jump
         if (controller.collisions.below && Input.GetButtonDown("Jump"))
         {
             anim.SetTrigger("takeOff");
         }
 
+        //Triggers the doubletakeoff animation, and mid doublejump
         if (doubleJumped == false && Input.GetButtonDown("Jump") && !controller.collisions.below)
         {
             anim.SetTrigger("doubleTakeOff");
             doubleJumped = true;
         }
         
-
+        //Tells the game to play the mid jumps until false, where it plays landing animation
         if (!controller.collisions.below)
         {
             anim.SetBool("isJumping", true);
@@ -74,7 +86,21 @@ public class Animations : MonoBehaviour
         }
 
 
-        //The player is grounded
-        //The player hits the jump key
+        if (Input.GetButton("Fire1") && controller.collisions.below)
+        {
+            anim.SetTrigger("actionButton");
+        }
+    }
+
+    void FaceRight()
+    {
+        parent.transform.eulerAngles = new Vector3(0, 0, 0);
+        moving = true;
+    }
+
+    void FaceLeft()
+    {
+        parent.transform.eulerAngles = new Vector3(0, 180, 0);
+        moving = true;
     }
 }
