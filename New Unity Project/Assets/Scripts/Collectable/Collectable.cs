@@ -4,23 +4,32 @@ using UnityEngine;
 
 public class Collectable : MonoBehaviour
 {
-    Renderer[] mat;
-    GameObject[] dreamArea;
+
+
+    public Material nightmareMAT;
+    public Material dreamMAT;
+
+    //Make tag "DreamArea0" and match the area int to the number at the end
+    public int area = 0;
+
+    //cystals you want to change material
+    public GameObject[] affectedCrystals;
+
+    //instantiated particles on interact
     public GameObject particles;
-    public Material goodDreamMaterial;
-    public int area;
+    
     string dreamMat = "DreamArea";
     bool nearCollectable;
     bool interacted;
 
     private void Start()
     {
-        dreamArea = GameObject.FindGameObjectsWithTag("DreamArea" + area);
-        for(int i = 0; i<dreamArea.Length-1; i++)
+        affectedCrystals = GameObject.FindGameObjectsWithTag("DreamArea" + area);
+        for(int i = 0;i <affectedCrystals.Length-1; i++)
         {
-            mat[i] = dreamArea[i].GetComponent<Renderer>();
+            Renderer renderer = affectedCrystals[i].GetComponent<Renderer>();
+            renderer.material = nightmareMAT;
         }
-        Debug.Log(mat.Length);
     }
 
     private void Update()
@@ -36,10 +45,12 @@ public class Collectable : MonoBehaviour
         if (!interacted)
         {
             Instantiate(particles, gameObject.transform);
-            for (int i = 0; i < mat.Length - 1; i++)
+            for (int i = 0; i < affectedCrystals.Length; i++)
             {
-                mat[i].material = goodDreamMaterial;
+                Renderer renderer = affectedCrystals[i].GetComponent<Renderer>();
+                renderer.material = dreamMAT;
             }
+            interacted = true;            
         }
     }
 

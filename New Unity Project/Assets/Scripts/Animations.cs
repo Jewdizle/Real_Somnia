@@ -86,7 +86,7 @@ public class Animations : MonoBehaviour
         }
 
 
-        if (Input.GetButton("Fire1") && controller.collisions.below)
+        if (Input.GetButtonDown("Fire1") && controller.collisions.below)
         {
             anim.SetTrigger("actionButton");
         }

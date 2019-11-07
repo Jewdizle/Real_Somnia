@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Crystal_Shader_MAT
+  m_Name: GoodDreamMAT
   m_Shader: {fileID: -6465566751694194690, guid: cb3c7e70a2f33cc4295dea5b160acfc0,
     type: 3}
   m_ShaderKeywords: 
@@ -70,7 +70,7 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - _shaderAlpha: -0.0002762135
+    - _shaderAlpha: 1
     m_Colors:
     - Color_E1626986: {r: 0.6013605, g: 0.073920846, b: 1.7412474, a: 0}
     - _BaseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
