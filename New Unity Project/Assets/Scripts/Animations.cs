@@ -28,20 +28,20 @@ public class Animations : MonoBehaviour
         moving = false;
 
         //Begnis the game on pressing W, note that controls aren't locked at the moment
-        if (Input.GetKey(KeyCode.W) && isAwake == false)
+        if (Input.anyKey && isAwake == false)
         {
             isAwake = true;
             anim.SetTrigger("anyButtonStart");
         }
 
         //Tests if the player is running right, set them to visually be running right, then plays the run animation
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetAxis("Horizontal")>0)
         {
             FaceRight();
         }
 
         //Same as above but for left
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetAxis("Horizontal") < 0)
         {
             FaceLeft();
         }
@@ -63,13 +63,13 @@ public class Animations : MonoBehaviour
         }
 
         //Triggers the takeoff animation, and the mid jump
-        if (controller.collisions.below && Input.GetKeyDown(KeyCode.Space))
+        if (controller.collisions.below && Input.GetButtonDown("Jump"))
         {
             anim.SetTrigger("takeOff");
         }
 
         //Triggers the doubletakeoff animation, and mid doublejump
-        if (doubleJumped == false && Input.GetKeyDown(KeyCode.Space) && !controller.collisions.below)
+        if (doubleJumped == false && Input.GetButtonDown("Jump") && !controller.collisions.below)
         {
             anim.SetTrigger("doubleTakeOff");
             doubleJumped = true;
@@ -86,7 +86,7 @@ public class Animations : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.LeftControl) && controller.collisions.below)
+        if (Input.GetButton("Fire1") && controller.collisions.below)
         {
             anim.SetTrigger("actionButton");
         }
