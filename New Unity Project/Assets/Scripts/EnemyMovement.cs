@@ -15,6 +15,7 @@ public class EnemyMovement : MonoBehaviour
     {
         trans = GetComponent<Transform>();
         StartCoroutine(EnemyMove());
+        
     }
    
     public IEnumerator EnemyMove()
@@ -31,9 +32,10 @@ public class EnemyMovement : MonoBehaviour
             float position = Mathf.Lerp(posA.position.x, posB.position.x, percentage);
             trans.position = new Vector3(position, trans.position.y, trans.position.z);
             yield return new WaitForSecondsRealtime(Time.deltaTime);
-            trans.transform.localScale = new Vector3 (-0.5f, 0.5f, 0.5f);
+            trans.rotation = Quaternion.Euler (new Vector3 (0, 180, 0));
         }
         yield return new WaitForSeconds(waitTime);
+        trans.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
         Debug.Log("Moving towards A");
         percentage = 0;
         while (percentage < 1)
@@ -49,7 +51,6 @@ public class EnemyMovement : MonoBehaviour
            
         }
         yield return new WaitForSeconds(waitTime);
-        trans.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         StartCoroutine(EnemyMove());
     }
 

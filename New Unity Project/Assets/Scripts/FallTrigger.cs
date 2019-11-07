@@ -28,7 +28,7 @@ public class FallTrigger : MonoBehaviour
         Instantiate(implosionEffect);
         Instantiate(evilExplosion);
         //Instantiate(verticalOffsetTrigger);
-        Player.gravity = -5f;
+        
         Destroy(platforms);
         deathZone.SetActive(false);
         deathzone2.SetActive(false);
