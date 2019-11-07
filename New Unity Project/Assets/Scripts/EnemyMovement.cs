@@ -15,14 +15,14 @@ public class EnemyMovement : MonoBehaviour
     {
         trans = GetComponent<Transform>();
         StartCoroutine(EnemyMove());
-        
+
     }
-   
+
     public IEnumerator EnemyMove()
     {
         percentage = 0;
         Debug.Log("Moving towards B");
-        while (percentage <1)
+        while (percentage < 1)
         {
             percentage += moveSpeed;
             if (percentage > 1)
@@ -32,7 +32,7 @@ public class EnemyMovement : MonoBehaviour
             float position = Mathf.Lerp(posA.position.x, posB.position.x, percentage);
             trans.position = new Vector3(position, trans.position.y, trans.position.z);
             yield return new WaitForSecondsRealtime(Time.deltaTime);
-            trans.rotation = Quaternion.Euler (new Vector3 (0, 180, 0));
+            trans.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
         }
         yield return new WaitForSeconds(waitTime);
         trans.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
@@ -41,32 +41,17 @@ public class EnemyMovement : MonoBehaviour
         while (percentage < 1)
         {
             percentage += moveSpeed;
-            if(percentage > 1)
+            if (percentage > 1)
             {
                 percentage = 1;
             }
             float position = Mathf.Lerp(posB.position.x, posA.position.x, percentage);
             trans.position = new Vector3(position, trans.position.y, trans.position.z);
             yield return new WaitForSecondsRealtime(Time.deltaTime);
-           
+
         }
         yield return new WaitForSeconds(waitTime);
         StartCoroutine(EnemyMove());
-    }
-
-
-
-
-
-
-
-    private void Update()
-    {
-        //if(movementOn == false)
-        //{
-        //    Debug.Log("restarting");
-        //    StartCoroutine(EnemyMove());
-        //}
     }
 }
 

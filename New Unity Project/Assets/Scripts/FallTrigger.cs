@@ -6,8 +6,7 @@ public class FallTrigger : MonoBehaviour
 {
     public GameObject deathZone;
     public GameObject deathzone2;
-    public GameObject wallsR;
-    public GameObject wallsL;
+    public GameObject walls;
     public GameObject platforms;
     public GameObject implosionEffect;
     public GameObject evilExplosion;
@@ -17,24 +16,22 @@ public class FallTrigger : MonoBehaviour
 
     private void Start()
     {
-        wallsR.SetActive(false);
-        wallsL.SetActive(false);
+        walls.SetActive(false);
+
     }
 
     public void Collect()
     {
-        CameraFollow.verticalSmoothTime = 0.1f;
+        
         anim.SetTrigger("falling");
+        Player.gravity = -10;
         Instantiate(implosionEffect);
         Instantiate(evilExplosion);
-        //Instantiate(verticalOffsetTrigger);
-        
-        Destroy(platforms);
+        platforms.SetActive(false);
         deathZone.SetActive(false);
         deathzone2.SetActive(false);
-        wallsR.SetActive(true);
-        wallsL.SetActive(true);
-        Destroy(gameObject, 0.5f);
+        walls.SetActive(true);
+        gameObject.SetActive(false);
 
     }
 
