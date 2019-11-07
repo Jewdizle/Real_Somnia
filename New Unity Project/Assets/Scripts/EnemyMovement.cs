@@ -31,7 +31,7 @@ public class EnemyMovement : MonoBehaviour
             float position = Mathf.Lerp(posA.position.x, posB.position.x, percentage);
             trans.position = new Vector3(position, trans.position.y, trans.position.z);
             yield return new WaitForSecondsRealtime(Time.deltaTime);
-           
+            trans.transform.localScale = new Vector3 (-0.5f, 0.5f, 0.5f);
         }
         yield return new WaitForSeconds(waitTime);
         Debug.Log("Moving towards A");
@@ -46,8 +46,10 @@ public class EnemyMovement : MonoBehaviour
             float position = Mathf.Lerp(posB.position.x, posA.position.x, percentage);
             trans.position = new Vector3(position, trans.position.y, trans.position.z);
             yield return new WaitForSecondsRealtime(Time.deltaTime);
+           
         }
         yield return new WaitForSeconds(waitTime);
+        trans.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         StartCoroutine(EnemyMove());
     }
 
