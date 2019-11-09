@@ -5,11 +5,12 @@ using UnityEngine;
 public class DoorClose : MonoBehaviour
 {
     public GameObject door;
-    public Transform target;
+    private Transform target;
     public float closeSpeed;
-    
+
     void Start()
     {
+        target = GameObject.FindGameObjectWithTag("DoorTarget").GetComponent<Transform>();
         door.transform.position = new Vector3(50.7f, 49.74f, 1);
         target.transform.position = new Vector3(51f, 36.02f, 1);
     }
@@ -20,8 +21,8 @@ public class DoorClose : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             Debug.Log("locked");
-            float step = closeSpeed * Time.deltaTime; // calculate distance to move
-            door.transform.position = Vector3.MoveTowards(target.position, door.transform.position, step);
+            
+            door.transform.position = Vector3.MoveTowards(door.transform.position, target.position, closeSpeed * Time.deltaTime);
             Destroy(this);
         }
     }

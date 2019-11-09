@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class RespawnManager : MonoBehaviour
 {
-
+    private Material player;
     public Transform respawnPoint;
-    
+
+
+
 
 
 
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Material>();
+
 
     }
 
@@ -27,4 +31,5 @@ public class RespawnManager : MonoBehaviour
         collider.gameObject.transform.position = respawnPoint.transform.position;
     }
 }
+
 

@@ -8,6 +8,7 @@ TagManager:
   - Game
   - Collectable
   - DreamArea0
+  - DoorTarget
   layers:
   - Default
   - TransparentFX
