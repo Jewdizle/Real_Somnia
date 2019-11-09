@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class Collectable : MonoBehaviour
 {
-    Renderer[] mat;
+    Renderer mat;
     GameObject[] dreamArea;
-    public GameObject particles;
+    public GameObject enemies;
+    public GameObject particle1;
+    public GameObject particle2;
+    public GameObject particle3;
     public Material goodDreamMaterial;
+    public Animator fadeAnim;
     public int area;
     string dreamMat = "DreamArea";
     bool nearCollectable;
@@ -16,16 +20,11 @@ public class Collectable : MonoBehaviour
     private void Start()
     {
         dreamArea = GameObject.FindGameObjectsWithTag("DreamArea" + area);
-        for(int i = 0; i<dreamArea.Length-1; i++)
-        {
-            mat[i] = dreamArea[i].GetComponent<Renderer>();
-        }
-        Debug.Log(mat.Length);
     }
 
     private void Update()
     {
-        if (nearCollectable && Input.GetButton("Fire1"))
+        if (nearCollectable == true && Input.GetButtonDown("Fire1") && interacted == false)
         {
             Collect();
         }
@@ -33,14 +32,21 @@ public class Collectable : MonoBehaviour
    
     void Collect()
     {
-        if (!interacted)
+        Instantiate(particle1, gameObject.transform);
+        Instantiate(particle2, gameObject.transform);
+        fadeAnim.SetTrigger("fadeToBlack");
+        Destroy(enemies, 0.5f);
+        particle3.SetActive(true);
+
+
+     
+        for (int i = 0; i < dreamArea.Length; i++)
         {
-            Instantiate(particles, gameObject.transform);
-            for (int i = 0; i < mat.Length - 1; i++)
-            {
-                mat[i].material = goodDreamMaterial;
-            }
+            mat = dreamArea[i].GetComponent<Renderer>(); 
+            mat.material = goodDreamMaterial;
         }
+        interacted = true;
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

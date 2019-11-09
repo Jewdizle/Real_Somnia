@@ -10,6 +10,7 @@ public class FallRespawnManager : MonoBehaviour
     public GameObject wall;
     public GameObject platforms;
     public GameObject fallCollectable;
+    public Animator fadeAnim;
 
 
     // Start is called before the first frame update
@@ -29,6 +30,7 @@ public class FallRespawnManager : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collider)
     {
         collider.gameObject.transform.position = respawnPoint.transform.position;
+        fadeAnim.SetTrigger("fadeToBlack");
         wall.SetActive(false);
         platforms.SetActive(true);
         fallCollectable.SetActive(true);

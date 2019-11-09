@@ -4,18 +4,15 @@ using UnityEngine;
 
 public class RespawnManager : MonoBehaviour
 {
-    private Material player;
+    public Animator fadeAnim;
     public Transform respawnPoint;
-
-
-
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Material>();
+        
 
 
     }
@@ -29,7 +26,12 @@ public class RespawnManager : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collider)
     {
         collider.gameObject.transform.position = respawnPoint.transform.position;
+        fadeAnim.SetTrigger("fadeToBlack");
+
+        
     }
+
+
 }
 
 

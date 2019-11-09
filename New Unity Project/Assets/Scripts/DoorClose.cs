@@ -23,7 +23,7 @@ public class DoorClose : MonoBehaviour
             Debug.Log("locked");
             
             door.transform.position = Vector3.MoveTowards(door.transform.position, target.position, closeSpeed * Time.deltaTime);
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 }

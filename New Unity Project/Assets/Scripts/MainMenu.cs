@@ -7,6 +7,8 @@ public class MainMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     public GameObject mainMenuUI;
+    public GameObject fade;
+    public GameObject fadeBlack;
     public GameObject pauseMenuUI;
 
 
@@ -18,7 +20,10 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         mainMenuUI.SetActive(false);
+        fade.SetActive(true);
+        fadeBlack.SetActive(true);
         Time.timeScale = 1f;
+        
     }
 
     void Update()
@@ -46,6 +51,8 @@ public class MainMenu : MonoBehaviour
     void Pause()
     {
         pauseMenuUI.SetActive(true);
+        fade.SetActive(false);
+        fadeBlack.SetActive(false);
         Time.timeScale = 0f;
         GameIsPaused = true;
     }

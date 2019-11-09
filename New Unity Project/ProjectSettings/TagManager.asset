@@ -7,8 +7,13 @@ TagManager:
   - Hidden
   - Game
   - Collectable
-  - DreamArea0
   - DoorTarget
+  - DreamArea1
+  - DreamArea2
+  - DreamArea3
+  - DreamArea4
+  - DreamArea5
+  - DreamArea6
   layers:
   - Default
   - TransparentFX
