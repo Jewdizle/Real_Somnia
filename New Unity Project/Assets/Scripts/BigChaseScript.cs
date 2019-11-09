@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChaseScript : MonoBehaviour
+public class BigChaseScript : MonoBehaviour
 {
     public float speed;
     public Transform target;
@@ -22,14 +22,13 @@ public class ChaseScript : MonoBehaviour
     void Update()
     {
         float xPos = transform.position.x;
-        enemyPos = new Vector3(Mathf.Clamp(xPos, 14, 41.64f), 32.72f, 0f);
+        enemyPos = new Vector3(Mathf.Clamp(xPos, 110.8f, 140.11f), 79.61f, 0f);
         transform.position = enemyPos;
 
         if (Vector2.Distance(enemyPos, target.position) <= minDist)
         {
             transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, transform.position.y), speed * Time.deltaTime);
             anim.SetBool ("isRunning", true);
-            anim.SetBool ("faceOpen", true);
         }
 
         else if (Vector2.Distance(enemyPos, target.position) >= maxDist)
