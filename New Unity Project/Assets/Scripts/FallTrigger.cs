@@ -10,7 +10,7 @@ public class FallTrigger : MonoBehaviour
     public GameObject platforms;
     public GameObject implosionEffect;
     public GameObject evilExplosion;
-    public GameObject verticalOffsetTrigger;
+    public GameObject gravityTrigger;
     public Animator anim;
 
 
@@ -30,6 +30,7 @@ public class FallTrigger : MonoBehaviour
         platforms.SetActive(false);
         deathZone.SetActive(false);
         deathzone2.SetActive(false);
+        gravityTrigger.SetActive(true);
         walls.SetActive(true);
         gameObject.SetActive(false);
 

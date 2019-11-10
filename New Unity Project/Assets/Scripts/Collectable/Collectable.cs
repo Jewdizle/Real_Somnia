@@ -35,7 +35,7 @@ public class Collectable : MonoBehaviour
         Instantiate(particle1, gameObject.transform);
         Instantiate(particle2, gameObject.transform);
         fadeAnim.SetTrigger("fadeToBlack");
-        Destroy(enemies, 0.5f);
+        Destroy(enemies, 1f);
         particle3.SetActive(true);
 
 
