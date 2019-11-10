@@ -33,12 +33,17 @@ public class Player : MonoBehaviour {
 	bool wallSliding;
 	int wallDirX;
 
+    public GameObject soundFX;
+    AudioSource jumpFX;
+
 	void Start() {
 		controller = GetComponent<Controller2D> ();
 
 		gravity = -(2 * maxJumpHeight) / Mathf.Pow (timeToJumpApex, 2);
 		maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
 		minJumpVelocity = Mathf.Sqrt (2 * Mathf.Abs (gravity) * minJumpHeight);
+
+        jumpFX = soundFX.GetComponent<AudioSource>();
 	}
 
 	void Update() {
@@ -70,6 +75,7 @@ public class Player : MonoBehaviour {
 	public void OnJumpInputDown() {
         if(!controller.collisions.below && !doubleJumped)
         {
+            jumpFX.Play();
             velocity.y = maxJumpVelocity;
             doubleJumped = true;
         }
@@ -88,7 +94,8 @@ public class Player : MonoBehaviour {
 			}
 		}
 		if (controller.collisions.below) {
-			if (controller.collisions.slidingDownMaxSlope) {
+            jumpFX.Play();
+            if (controller.collisions.slidingDownMaxSlope) {
 				if (directionalInput.x != -Mathf.Sign (controller.collisions.slopeNormal.x)) { // not jumping against max slope
 					velocity.y = maxJumpVelocity * controller.collisions.slopeNormal.y;
 					velocity.x = maxJumpVelocity * controller.collisions.slopeNormal.x;

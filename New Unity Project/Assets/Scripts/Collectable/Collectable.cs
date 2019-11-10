@@ -17,9 +17,16 @@ public class Collectable : MonoBehaviour
     bool nearCollectable;
     bool interacted;
 
+    public GameObject boomFX;
+    public GameObject woohooFX;
+    AudioSource boom;
+    AudioSource woohoo;
+
     private void Start()
     {
         dreamArea = GameObject.FindGameObjectsWithTag("DreamArea" + area);
+        boom = boomFX.GetComponent<AudioSource>();
+        woohoo = woohooFX.GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -38,7 +45,8 @@ public class Collectable : MonoBehaviour
         Destroy(enemies, 1f);
         particle3.SetActive(true);
 
-
+        boom.Play();
+        woohoo.Play();
      
         for (int i = 0; i < dreamArea.Length; i++)
         {
